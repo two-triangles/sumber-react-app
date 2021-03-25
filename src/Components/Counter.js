@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
+  randomNumber = this.props.randomNumber
   render() {
-    return <div></div>;
+    return <div>
+      <p className="increment_main">{this.props.incrementNumber}</p>
+    </div>;
   }
 }
 

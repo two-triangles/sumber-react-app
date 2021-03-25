@@ -14,3 +14,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.header_section {
+  background-color: rgb(228, 97, 200);
+  padding: 4em;
+}
+
+.inc_button {
+  margin-right: 1em;
+}
