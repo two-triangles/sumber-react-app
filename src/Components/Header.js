@@ -2,14 +2,26 @@ import React from "react";
 
 class Header extends React.Component {
   render() {
-    console.log(this.props.randomNumber);
     return (
       <div className="header_section">
         <h1>SUMBER</h1>
-        <button onClick={() => this.props.generateNumber()}>
+        <div className="instructions">
+          <ul>
+            <li>Press the random number button!</li>
+            <li>Use the incrementer buttons to increase the counter!</li>
+            <li>Match your number!</li>
+            <li>Hit refresh and start again!</li>
+          </ul>
+        </div>
+        <button
+          className="random_num_button"
+          onClick={() => this.props.generateNumber()}
+        >
           Random Number
         </button>
-        <p className="random_number">{this.props.randomNumber}</p>
+        <div className="random_num_container">
+          <p className="random_number">{this.props.randomNumber}</p>
+        </div>
       </div>
     );
   }
