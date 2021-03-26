@@ -7,75 +7,64 @@ import Refresh from "./Components/Refresh";
 
 class App extends React.Component {
   state = {
+    buttons: {
+      "addOne": {
+        disabled: false,
+        number: 1
+      },
+      "addFive": {
+        disabled: false,
+        number: 5
+      },
+      "addTen": {
+        disabled: false,
+        number: 10
+      }
+    },
     randomNumber: null,
     incrementNumber: 0,
+    message: '',
   };
 
   generateNumber = () => {
     this.setState((currState) => {
       const newState = { ...currState };
       newState.randomNumber = Math.floor(Math.random() * 100 + 1);
-
       return newState;
     });
   };
 
-  incByOne = (event) => {
-    console.log(event);
-    if (this.state.randomNumber === null) {
-      return this.state.incrementNumber;
-    }
-
-    this.setState((currState) => {
-      const newState = { ...currState };
-      newState.incrementNumber++;
-      if (newState.incrementNumber === currState.randomNumber) {
-        console.log("cheese");
-      } else if (newState.incrementNumber > currState.randomNumber) {
-        newState.incrementNumber = currState.incrementNumber;
-      }
-      return newState;
-    });
-  };
-
-  incByFive = (event) => {
+  incrementByN = (num) => {
     if (this.state.randomNumber === null) {
       return this.state.incrementNumber;
     }
     this.setState((currState) => {
       const newState = { ...currState };
-      newState.incrementNumber = newState.incrementNumber + 5;
-      if (newState.incrementNumber === currState.randomNumber) {
-        console.log("cheese");
-      } else if (newState.incrementNumber > currState.randomNumber) {
-        console.log(newState.incrementNumber);
-      }
-      return newState;
-    });
-  };
+      newState.incrementNumber += num;
 
-  incByTen = () => {
-    if (this.state.randomNumber === null) {
-      return this.state.incrementNumber;
-    }
-    this.setState((currState) => {
-      const newState = { ...currState };
-      newState.incrementNumber = newState.incrementNumber + 10;
       if (newState.incrementNumber === currState.randomNumber) {
-        console.log("cheese");
+        newState.message = 'Congratulations, number matched!'
+
       } else if (newState.incrementNumber > currState.randomNumber) {
+        newState.message = 'Tut tut, try again! Hit refresh'
       }
       return newState;
     });
+
   };
 
   clearCounter = () => {
     this.setState((currState) => {
+
       const newState = { ...currState };
       newState.incrementNumber = 0;
+      newState.message = ''
+
       return newState;
+
     });
   };
+
 
   render() {
     return (
@@ -87,12 +76,13 @@ class App extends React.Component {
         <Counter
           randomNumber={this.state.randomNumber}
           incrementNumber={this.state.incrementNumber}
+          message={this.state.message}
         />
         <Incrementers
-          incByOne={this.incByOne}
-          incByFive={this.incByFive}
-          incByTen={this.incByTen}
+          incrementByN={this.incrementByN}
           incrementNumber={this.state.incrementNumber}
+          buttons={this.state.buttons}
+
         />
         <Refresh clearCounter={this.clearCounter} />
       </div>

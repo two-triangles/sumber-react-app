@@ -126,3 +126,24 @@ code {
 .inc_button {
   margin-right: 1em;
 }
+
+/* .counter_num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid white;
+  border-radius: 100%;
+  background-color: rgb(29, 29, 46);
+  width: 90px;
+  height: 90px;
+  margin-top: 30px;
+  font-size: 2.5rem;
+  font-family: Digital;
+  box-shadow: 0 0 10px #000000;
+} */
+
+.Counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
