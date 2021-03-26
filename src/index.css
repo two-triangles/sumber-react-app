@@ -96,9 +96,9 @@ code {
 }
 
 .random_num_button:hover {
-  background-color: #fff;
+  background-color: #29d1d3;
   box-shadow: 5px 10px 5px rgba(0, 0, 0, 1);
-  color: rgb(228, 97, 200);
+  color: #fff;
   cursor: pointer;
 }
 
