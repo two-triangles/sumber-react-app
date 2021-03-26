@@ -4,6 +4,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header_section">
+        <div className="background_img"></div>
         <h1>SUMBER</h1>
         <div className="instructions">
           <ul>

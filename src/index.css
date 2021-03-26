@@ -40,6 +40,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(29, 29, 46);
   color: antiquewhite;
+  height: 100vh;
 }
 
 code {
@@ -55,8 +56,10 @@ code {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: rgb(228, 97, 200);
+  /*background-color: rgb(228, 97, 200);*/
   padding: 4em;
+  background-image: url("./background.jpg");
+  background-size: cover;
 }
 
 .header_section h1 {

@@ -1,7 +1,7 @@
 const Refresh = (props) => {
   return (
     <div className="refresh_button">
-      <button onClick={() => props.clearApp()} className="refresh">
+      <button onClick={() => props.clearCounter()} className="refresh">
         Refresh
       </button>
     </div>

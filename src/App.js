@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import Header from "./Components/Header";
 import Counter from "./Components/Counter";
-import IncrementByOne from "./Components/IncrementByOne";
+import Incrementers from "./Components/Incrementers";
 import Refresh from "./Components/Refresh";
 
 class App extends React.Component {
@@ -20,24 +20,36 @@ class App extends React.Component {
     });
   };
 
-  incByOne = () => {
+  incByOne = (event) => {
+    console.log(event);
     if (this.state.randomNumber === null) {
       return this.state.incrementNumber;
     }
+
     this.setState((currState) => {
       const newState = { ...currState };
       newState.incrementNumber++;
+      if (newState.incrementNumber === currState.randomNumber) {
+        console.log("cheese");
+      } else if (newState.incrementNumber > currState.randomNumber) {
+        newState.incrementNumber = currState.incrementNumber;
+      }
       return newState;
     });
   };
 
-  incByFive = () => {
+  incByFive = (event) => {
     if (this.state.randomNumber === null) {
       return this.state.incrementNumber;
     }
     this.setState((currState) => {
       const newState = { ...currState };
       newState.incrementNumber = newState.incrementNumber + 5;
+      if (newState.incrementNumber === currState.randomNumber) {
+        console.log("cheese");
+      } else if (newState.incrementNumber > currState.randomNumber) {
+        console.log(newState.incrementNumber);
+      }
       return newState;
     });
   };
@@ -49,14 +61,17 @@ class App extends React.Component {
     this.setState((currState) => {
       const newState = { ...currState };
       newState.incrementNumber = newState.incrementNumber + 10;
+      if (newState.incrementNumber === currState.randomNumber) {
+        console.log("cheese");
+      } else if (newState.incrementNumber > currState.randomNumber) {
+      }
       return newState;
     });
   };
 
-  clearApp = () => {
+  clearCounter = () => {
     this.setState((currState) => {
       const newState = { ...currState };
-      newState.randomNumber = null;
       newState.incrementNumber = 0;
       return newState;
     });
@@ -73,13 +88,13 @@ class App extends React.Component {
           randomNumber={this.state.randomNumber}
           incrementNumber={this.state.incrementNumber}
         />
-        <IncrementByOne
+        <Incrementers
           incByOne={this.incByOne}
           incByFive={this.incByFive}
           incByTen={this.incByTen}
           incrementNumber={this.state.incrementNumber}
         />
-        <Refresh clearApp={this.clearApp} />
+        <Refresh clearCounter={this.clearCounter} />
       </div>
     );
   }
